@@ -1,20 +1,107 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!DOCTYPE html>
+<html>
+  <body>
+    <!-- Tombol tab -->
+    <div class="tab-label" onclick="showTab('tabHere')">Tab Here</div>
+    <div class="tab-label" onclick="showTab('tabHistory')">History</div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Isi tab -->
+    <div id="tabHere" class="tab-content">
+        <h1>Selamat datang di halaman Home</h1>
+        <p>Ini adalah halaman Home yang sedang dalam pengembangan.</p>
+    </div>
+</body>
 
-  <div id="container">
-    <strong>Ready to create an app?belum</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+<head>
+    <title>Tab KTP</title>
+    <style>
+        /* Gaya tampilan untuk tab */
+        .tab {
+            display: none;
+        }
+
+        /* Gaya tampilan untuk tombol tab */
+        .tab-label {
+            padding: 10px 20px;
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        /* Gaya tampilan untuk tab yang aktif */
+        .tab-content {
+            display: none;
+            padding: 10px;
+            background-color: #fff;
+        }
+    </style>
+    <script>
+        // Fungsi untuk menampilkan tab yang dipilih
+        function showTab(tabName) {
+            // Mengambil semua elemen dengan class "tab-content"
+            var tabContents = document.getElementsByClassName("tab-content");
+
+            // Menghilangkan tampilan semua tab
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
+
+            // Menampilkan tab yang dipilih
+            document.getElementById(tabName).style.display = "block";
+        }
+
+        // Fungsi untuk membaca data KTP menggunakan NFC
+        function readKTP() {
+            // Simulasi pembacaan data KTP menggunakan NFC
+            var dataKTP = {
+                nama: "Sulih Nursya Banafsa",
+                alamat: "ds. bojonggebang kec. babakan kab. cirebon",
+                tanggalLahir: "12 Agustus 2001"
+            };
+
+            // Mengisi data KTP ke dalam elemen HTML pada halaman
+            document.getElementById("namaKTP").innerHTML = dataKTP.nama;
+            document.getElementById("alamatKTP").innerHTML = dataKTP.alamat;
+            document.getElementById("tanggalLahirKTP").innerHTML = dataKTP.tanggalLahir;
+
+            // Menampilkan tab KTP setelah data diisi
+            showTab("tabHere");
+
+            // Menambahkan data KTP ke halaman "History"
+            var historyElement = document.getElementById("history");
+            historyElement.innerHTML += "<p>Nama: " + dataKTP.nama + "</p>";
+            historyElement.innerHTML += "<p>Alamat: " + dataKTP.alamat + "</p>";
+            historyElement.innerHTML += "<p>Tanggal Lahir: " + dataKTP.tanggalLahir + "</p>";
+
+            // Mengirim pesan WhatsApp dengan data KTP
+            var message = "Nama: " + dataKTP.nama + "\nAlamat: " + dataKTP.alamat + "\nTanggal Lahir: " + dataKTP.tanggalLahir;
+            sendWhatsAppMessage(message);
+        }
+
+        // Fungsi untuk mengirim pesan WhatsApp
+        function sendWhatsAppMessage(message) {
+            // Ganti nomor telepon dengan nomor yang ingin dituju
+            var phoneNumber = "0896330798836";
+            // Ganti pesan dengan format yang diinginkan
+            var whatsappLink = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+            window.open(whatsappLink, "_blank");
+        }
+    </script>
+</head>
+<body>
+    <!-- Tombol tab -->
+    <div class="tab-label" onclick="showTab('tabHere')">Tab Here</div>
+    <div class="tab-label" onclick="showTab('tabHistory')">History</div>
+
+    <!-- Isi tab -->
+    <div id="tabHere" class="tab-content">
+      <div id="map">
+        <iframe
+          width="100%"
+          height="300"
+          frameborder="0"
+          style="border:0"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7298272946355!2d<longitude>!3d<latitude>!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f41a6448bb97%3A0x8f260eaf1e4ab77!2sJalan%20Pantai%20Pandan%20Kec.%20Samarinda%20Ulu%2C%20Kota%20Samarinda%2C%20Kalimantan%20Timur%2075157!5e0!3m2!1sen!2sid!4v1623400737403!5m2!1sen!2sid"
+          allowfullscreen
+        ></iframe>
+      </div>
+       

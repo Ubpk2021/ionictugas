@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'history',
+    loadChildren: () => import('./history/history.module').then( m => m.HistoryPageModule)
+  },
+  {
+    path: 'whatsapp-geolocation.component',
+    loadChildren: () => import('./whatsapp-geolocation.component/whatsapp-geolocation.component.module').then( m => m.WhatsappGeolocationComponentPageModule)
+  },
 ];
 
 @NgModule({

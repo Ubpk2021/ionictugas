@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tab KTP</title>
+    <style>
+        /* Gaya tampilan untuk tab */
+        .tab {
+            display: none;
+        }
+
+        /* Gaya tampilan untuk tombol tab */
+        .tab-label {
+            padding: 10px 20px;
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        /* Gaya tampilan untuk tab yang aktif */
+        .tab-content {
+            display: none;
+            padding: 10px;
+            background-color: #fff;
+        }
+    </style>
+    <script>
+        // Fungsi untuk menampilkan tab yang dipilih
+        function showTab(tabName) {
+            // Mengambil semua elemen dengan class "tab-content"
+            var tabContents = document.getElementsByClassName("tab-content");
+
+            // Menghilangkan tampilan semua tab
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
+
+            // Menampilkan tab yang dipilih
+            document.getElementById(tabName).style.display = "block";
+        }
+
+        // Fungsi untuk membaca data KTP menggunakan NFC
+        function readKTP() {
+            // Simulasi pembacaan data KTP menggunakan NFC
+            var dataKTP = {
+                nama: "John Doe",
+                alamat: "Jalan Raya 123",
+                tanggalLahir: "01 Januari 1980"
+            };
+
+            // Menambahkan data KTP ke halaman "History"
+            var historyElement = document.getElementById("history");
+            historyElement.innerHTML += "<p>Nama: " + dataKTP.nama + "</p>";
+            historyElement.innerHTML += "<p>Alamat: " + dataKTP.alamat + "</p>";
+            historyElement.innerHTML += "<p>Tanggal Lahir: " + dataKTP.tanggalLahir + "</p>";
+
+            // Menampilkan tab "History"
+            showTab("tabHistory");
+        }
+    </script>
+</head>
+<body>
+    <!-- Tombol tab -->
+    <div class="tab-label" onclick="showTab('tabHere')">Tab Here</div>
+    <div class="tab-label" onclick="showTab('tabHistory')">History</div>
+
+    <!-- Isi tab -->
+    <div id="tabHere" class="tab-content">
+        <!-- Konten tab KTP -->
+        <h2>Data KTP</h2>
+        <!-- Menampilkan data KTP yang diisi secara otomatis -->
+        <p>Nama: <span id="namaKTP"></span></p>
+        <p>Alamat: <span id="alamatKTP"></span></p>
+        <p>Tanggal Lahir: <span id="tanggalLahirKTP"></span></p>
+        <button onclick="readKTP()">Simpan ke History</button>
+    </div>
+
+    <div id="tabHistory" class="tab-content">
+        <!-- Konten tab History -->
+        <h2>History</h2>
+        <div id="history"></div>
+    </div>
+
+    <script>
+        // Menampilkan tab pertama secara default
+        showTab('tabHere');
+    </script>
+</body>
+</html>

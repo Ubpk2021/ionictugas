@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>My App</name>
+    <description>Aplikasi Cordova NFC</description>
+    <author email="author@example.com" href="http://example.com">Nama Penulis</author>
+
+    <!-- Platform yang ingin Anda dukung -->
+    <platform name="android">
+        <!-- Izinkan akses ke fitur NFC -->
+        <preference name="android.permission.NFC" value="true" />
+    </platform>
+
+    <!-- Plugin NFC -->
+    <plugin name="phonegap-nfc" source="npm" spec="~3.5.0" />
+
+    <!-- Preferensi lainnya -->
+    <!-- ... -->
+</widget>

@@ -1,0 +1,7 @@
+{
+  "name": "ionictugas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
